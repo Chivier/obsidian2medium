@@ -1,0 +1,2 @@
+[console_scripts]
+obs2medium = o2m.translator:o2m

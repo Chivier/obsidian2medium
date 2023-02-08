@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: o2m
+Version: 0.0.1
+Summary: A small example package
+Author-email: Chivier Humber <chivier.humber@outlook.com>
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+
+# Obsdian2Medium
+

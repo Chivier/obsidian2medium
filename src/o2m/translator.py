@@ -12,11 +12,9 @@ import requests
 import markdown
 import requests
 
-token = "21cf4c116dda4d332e62a86ec2c745474827be4b011ddd1cf21077dda37face1c"
-
 # End point for yout requests
     
-def postToMedium(title, tags, content):
+def postToMedium(token, title, tags, content):
     url = "https://api.medium.com/v1"
 
     # header requred
@@ -59,7 +57,7 @@ def postToMedium(title, tags, content):
             print(url)  # this url where you can acess your url
 
 
-def postImage(image_path):
+def postImage(token, image_path):
     image_type = mimetypes.guess_type(image_path)[0]
     url = "https://api.medium.com/v1"
 
@@ -200,6 +198,7 @@ class translator_tp:
         tag_pattern = r"#[^\ ^#^\s]+"
         link_pattern = r"\!\[\[.+\]\]"
         
+        token = self.config["medium_token"]        
         # os.mkdir(output_dir_name)
 
         image_counter = 0
@@ -227,7 +226,7 @@ class translator_tp:
                     elif link_file_type == "image":
                         image_counter += 1
                         # print out image link here
-                        img_url = postImage(link_file_location)
+                        img_url = postImage(token, link_file_location)
                         # img_url = "https://cdn-images-1.medium.com/proxy/1*kmMg2ATucBajGxo9EBi30Q.png"
                         md_file_content += (
                             f"![image_{image_counter}]({img_url})" + "\n"
@@ -240,7 +239,7 @@ class translator_tp:
                 self.tags.append("blog")
             if len(self.links) == 1:
                 self.tags.append("blog")
-            postToMedium(self.title, self.tags, md_file_content)
+            postToMedium(token, self.title, self.tags, md_file_content)
 
 
 def o2m():
